@@ -1,0 +1,201 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+
+    <style>
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none; 
+    }
+    </style>
+    <!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:70px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container" >
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Update Booking</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Update Booking</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!--================Breadcrumb Area =================-->
+    
+    <!--================ About History Area  =================-->
+
+    <section class="about_history_area section_gap" style="padding-top:40px;">
+       
+        <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+            {% for message in messages %}
+            <p id="message" style="background-color:grey;color:white;width:300px;text-align:center">{{message}}</p>
+            {% endfor %}
+        </div>
+        </div>
+        <div class="container" style="display:flex;align-items:center;justify-content:center;border:2px solid rgb(36, 21, 9)">
+            <form method="POST">
+                {% csrf_token %} 
+                {% for booking in bookings %}
+                <div class="container"> 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="required">First Name:</label>
+                                            <input name="first_name" type="text" class="form-control" value={{booking.first_name}} required/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="required">Last Name:</label>
+                                        <input name="last_name" type="text" class="form-control" value={{booking.last_name}} required />
+                                    </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="required">Mobile:(xxxxxxxxxx)</label>
+                                        <input name="phnno" type="tel" pattern="^\d{10}$" class="form-control" value={{booking.mobile}} required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="required">Email Id:</label>
+                                            <input name="email" type="email" class="form-control" value={{booking.email}} required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="required">City:</label>
+                                            <input name="city" type="text" class="form-control" value={{booking.city}} required/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                        <label class="">State:</label>
+                                        <input name="state" type="text" class="form-control" value={{booking.state}} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="required">No Of Rooms:</label>
+                                            <input type="number" min=1 max=7 class="form-control" id="no_of_rooms" name="no_of_rooms" value={{booking.no_of_rooms}} required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="required">No of Adults:</label>
+                                            <input type="number" min=1 max=20 class="form-control" name="adults" value={{booking.no_of_adults}} id="adults" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="required">No of Children:</label>
+                                        <input type="number" min=0 max=20 class="form-control" name="children" value={{booking.no_of_childen}} id="children" required>
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-md-2">
+                                        <label class="control-label required" for="from">Check In Date:</label>
+                                        <div class="input-group " >         
+                                            <span class="add-on input-group-addon"></span>
+                                            <input id="checkin_date" name="checkin_date" type="date" value={{booking.check_in_date}} required onchange="cal()">         
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <label class="control-label required" for="from">Check Out Date:</label>
+                                        <div class="input-group " >         
+                                            <span class="add-on input-group-addon"></span>
+                                            <input id="checkout_date" name="checkout_date" value={{booking.check_out_date}}  type="date" required onchange="cal()">         
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="required">No of Days:</label>
+                                            <input type="number" disabled class="form-control" name="no_of_days" value={{booking.no_of_days}} id="no_of_days" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Total Price Amount:(3,500Rs/night)</label>
+                                            <input id="total_price" type="number" name="total_price" value={{booking.amount}} class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Amount Paid:</label>
+                                            <input id="amount_paid" type="number" name="amount_paid" class="form-control" value={{booking.amount_paid}} onchange="cal()">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Amount Due:</label>
+                                            <input id="amount_due" type="number" name="amount_due" class="form-control" value={{booking.amount_paid}} disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="required">Payment Mode:</label>
+                                            <select name="payment_mode" class="form-control">   
+                                            <option>{{booking.payment_mode}}</option>
+                                            <option>Cash</option>
+                                            <option>Online</option>
+                                            <option>Quick Pay</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Payment Status:</label>
+                                            <select id="payment_status" name="payment_status" class="form-control" disabled>   
+                                                <option>{{booking.payment_status}}  </option>
+                                                <option>Full Paid</option>
+                                                <option>Partially Paid</option>
+                                                <option>Not Paid</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <br>
+                                
+                                <div class="row">
+                                    <div class="" style="width:100%">
+                                        <div style="text-align:center">
+                                            <label></label>
+                                            <input type="text" name="booking_id" value="{{booking.booking_id}}" style="display:none">
+                                            <input type="submit" name="update_record"  class="form-control btn theme_btn button_hover" style="width:200px" value="Book Now">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </form> 
+        </div>
+    </section>
+    <!--================ About History Area  =================-->
+    
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  =================-->
+
+

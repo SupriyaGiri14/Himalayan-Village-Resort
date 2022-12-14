@@ -1,0 +1,56 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+
+    <!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:70px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container" >
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Register</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Register</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!--================Breadcrumb Area =================-->
+    
+    <!--================ About History Area  =================-->
+
+    <section class="about_history_area section_gap" style="padding-top:40px;">
+        <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+            <h2>User Registration Form</h2>
+            
+        </div>
+       
+        <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %} 
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+            {% for message in messages %}
+            <p id="message" style="background-color:grey;color:white;width:300px;text-align:center">{{message}}</p>
+            {% endfor %}
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;">
+            <a href="{% url 'register' %}">Go to Registration page!!</a>
+        </div>
+        </div>
+                
+        </div>
+    </section>
+    <!--================ About History Area  =================-->
+    
+
+
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  =================-->

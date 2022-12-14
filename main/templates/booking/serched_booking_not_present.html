@@ -1,0 +1,49 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+
+    <style>
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none; 
+    }
+    </style>
+    <!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:70px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container" >
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Search Booking</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Search Booking Not Found!</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!--================Breadcrumb Area =================-->
+    
+    <!--================ About History Area  =================-->
+
+    <section class="about_history_area section_gap" style="padding-top:40px;">
+       
+        <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+            {% for message in messages %}
+            <p id="message" style="background-color:grey;color:white;width:300px;text-align:center">{{message}}</p>
+            {% endfor %}
+        </div>
+        <div class="d-flex justify-content-center links">
+            <a href="{% url 'admin_manage_booking' %}" class="ml-2">Go Back to Bookings Page? </a>
+        </div>
+        
+    </section>
+    <!--================ About History Area  =================-->
+    
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  =================-->
+
+

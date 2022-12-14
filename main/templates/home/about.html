@@ -1,0 +1,53 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+<!--================End Header Area =================-->
+    
+    <!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:70px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">About Us</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">About</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!--================Breadcrumb Area =================-->
+        
+<!--================ About History Area  =================-->
+    <section class="about_history_area section_gap">
+        <div class="container">
+            <div class="row" style="border: 1px solid black">
+                <video class="img-fluid" autoplay loop muted style="height:500px;width:100%;object-fit: fill;">
+                    <source src="{% static 'image/videos/hotel scenery1.mp4' %}" type="video/mp4" />
+                </video>
+            </div>
+            <br>
+            <div class="row">
+                <div class="d_flex align-items-center">
+                    <div class="about_content" center>
+                        <h2 class="title title_color" style="text-align:center;">About Us </h2>
+                        <p id="paragraphs_on_site">It is picturesquely set amongst the scenic beauty of the famous hill station, kausani. 
+                            kausani is famous for its scenic splendour and its spectacular 300 km-wide panoramic view of Himalayan peaks like Trisul, Nanda Devi and Panchchuli. 
+                            Surrounded by undulating hills and imbued with simple elegance, the property is spread across 7 luxurious suites, nestled in pairs across five structures with private overlapping terraces offering views to the Great Himalayan range.
+                        </p>
+                        <p style="font-family:Comfortaa;font-size:18px;;letter-spacing:1px;color:#334418">
+                             All the cottages are tea garden-facing and through the windows, guests can behold breathtaking sights of the Himalayas. The resort boasts of a stylish restaurant called Bhumika that serves a variety of mouth-watering Indian, Chinese, Mughlai, South Indian, and Kumaouni dishes. Within the premises, there is also a coffee shop where guests can savour special Kausani garden tea, herbal tea, coffee, juices and fast foods. Besides offering comfortable accommodation, Himalayan Village Resort offers ample indoor and outdoor activities like bonfire with music, nature trekking, cultural programs, yoga and meditations, bird watching and more.
+                        </p>
+                        <!--a href="#" class="button_hover theme_btn_two">Request Custom Price</a-->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+<!--================ About History Area  =================-->
+
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  =================-->

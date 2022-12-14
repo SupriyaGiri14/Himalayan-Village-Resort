@@ -1,0 +1,259 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+<!--================End Header Area =================-->
+         
+<!--================Banner Area =================-->
+    <section class="banner_area">
+        <div id="carouselExampleIndicators" class="carousel slide" style="width:100px;height:100px;margin-left:50%" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" >
+                <div class="carousel-item active">
+                    <img class="d-block w-100" style="height:500px;" src="{% static 'image/banner_bg.jpg' %}" alt="Kausami mountain view">
+                    <div class="carousel-caption">
+                        <h2>Away from monotonous life</h2>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <video class="img-fluid" autoplay loop muted style="height:500px;width:1550px;object-fit: fill;">
+                        <source src="{% static 'image/hresort_video.mp4' %}" type="video/mp4" />
+                    </video>
+                    <div class="carousel-caption">
+                        <h2>Enjoy Pleasant Retreat at our Resort</h2>
+                    </div>
+                </div>      
+                <div class="carousel-item" >
+                    <img class="d-block w-100" style="height: 500px;" src="{% static 'image/nainital_banner.jpg' %}" alt="R iver and Mountain View">
+                    <div class="carousel-caption">
+                        <h2>Book your Holidays at Dream Location</h2>
+                    </div>
+                </div>       
+            </div>
+        </div>
+              
+        <div class="check-availability" style="margin-left:11px;width:98.3%">
+            <div class="row">
+                <div class="col-lg-12" id="check_availability_back">
+                    <marquee scrollamount="9"><h2 style="text-align:center; font-weight:bold;"><span style="color:#FC0;">FOR ROOM RESERVATION, CONTACT - </span> +91 9599776744, +971 528340071</h2></marquee>
+                </div>
+            
+            </div>
+        </div> 
+            <form method="post" validate style="padding-top:30px;padding-bottom:20px;background-color:rgb(208, 205, 206)">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-2">
+                        <h3 style="margin-left:6px;color:black">BOOK YOUR ROOM</h3>
+                    </div>
+                    <div class="col-md-2">
+                       <input placeholder="Name" class="form-control"  id="name" name="name" required  type="text">
+                    </div>
+                    <div class="col-md-2">
+                        <input placeholder="Phn no:0123456789" id="phone" name="phone" class="form-control" required type="text" pattern="[1-9]{1}[0-9]{9}"> 
+                    </div>
+                    <div class="col-md-2">        
+                        <input placeholder="E mail" id="email" name="email" class="form-control" required type="email">
+                    </div>
+                    <div class="col-md-2">
+                        <input placeholder="Location" id="location" name="location" class="form-control" required type="text"> 
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" name="booking" onclick="ddlValidate();" class="btn theme_btn button_hover" value="Enquire" style="color:black">
+                    </div>                        
+                </div>
+            </form>     
+        </div>   
+         
+    </section>
+<!--================Banner Area =================-->
+        
+<!--================ Accomodation Area  =================-->
+<section class="section_gap" style="background-color:floralwhite;">
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 class="title_color">The Best Hotels In Kausani Uttarakhand</h2>
+                <p id="paragraphs_on_site">The iconic Himalayan Village Resort boasts of 7 anitique wooden cottages. Resort is located conveniently on Baijnath Road.The unruffled mountain landscape of the land and the inimitable architecture of resort are so enchanting that guests might not want to go back to their homes and its chores.</p><br> 
+        </div>
+        <div class="row" style="margin-top:40px;">
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/hotel_pics/cottage view.png' %}" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/hotel_pics/cottage view2.jpg' %}" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/hotel_pics/cottage view3.jpg' %}" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/hotel_pics/Living Room.jpg' %}" alt="Card image cap">
+                </div>
+            </div>
+            
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/hotel_pics/view from resort.png' %}" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/room3.jpg' %}" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/room3.jpeg' %}" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/room2.jpg' %}" alt="Card image cap">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" style="height:300px;" src="{% static 'image/hotel_pics/about_bg.jpg' %}" alt="Card image cap">
+                </div>
+            </div>
+        </div>     
+    </div>
+</section>
+<br>
+<br>
+<!--================ Accomodation Area  =================-->
+    
+<!--================ Facilities Area  =================-->
+<section class="facilities_area section_gap">
+    <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
+    </div>
+    <div class="container" style="margin-bottom:40px;">
+        <div class="section_title text-center">
+            <h2 class="title_w">Hotel Facilities</h2>
+            <p>Who are in extremely love with eco friendly system.</p>
+        </div>
+        <div class="row mb_30">
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Restaurant</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Wi-Fi</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Rent a Car</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Laundry Service</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Attached bathroom</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Kids Play Area</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Safety and Security</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Parking</h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr"></i>Room service</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  
+<!--================ Facilities Area  =================-->
+        
+<!--================ Testimonial Area  =================-->
+    <section class="testimonial_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 class="title_color">Testimonial from our Clients</h2>
+                <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall from </p>
+            </div>
+            <div class="testimonial_slider owl-carousel">
+                   
+                <div class="media testimonial_item" style="border: 1px solid red;height:280px">
+                    <img class="rounded-circle" src="{% static 'image/testi1.jpg' %}" alt="">
+                    <div class="media-body">
+                        <p>The hotel is well away from markets and civilization, very peaceful band serene place. The view is absolutely amazing and an overall peaceful environment to relax and enjoy. We did also get a glimpse of snow covered himalayas even though it was early october. </p>
+                        <a href="#"><h4 class="sec_h4">209karan </h4></a>
+                        <div class="star">
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star-half-o"></i></a>
+                        </div>
+                    </div>
+                </div>    
+                <div class="media testimonial_item" style="border: 1px solid red;height:280px">
+                    <img class="rounded-circle" src="{% static 'image/testi2.jpg' %}" alt="">
+                    <div class="media-body">
+                        <p>Owner & staff was good , food was also good. Away from main market. Will definitely come again.</p>
+                        <a href="#"><h4 class="sec_h4">AshishVashist </h4></a>
+                        <div class="star">
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star-half-o"></i></a>
+                        </div>
+                    </div>
+                </div>    
+                <div class="media testimonial_item" style="border: 1px solid red;height:280px">
+                    <img class="rounded-circle" src="{% static 'image/testi3.jpg' %}" alt="">
+                    <div class="media-body">
+                        <p>The hotel is amazing and the service is very good too. The view of the tea estates is awesome and the owner of the place is a very helpful person. The food is also very good. All in all a great experience. </p>
+                        <a href="#"><h4 class="sec_h4">Abhinav S</h4></a>
+                        <div class="star">
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star-half-o"></i></a>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <a href="https://wa.me/971563428302" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float fa-spin"></i></a>
+    </section>
+<!--================ Testimonial Area  =================-->
+        
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  =================-->

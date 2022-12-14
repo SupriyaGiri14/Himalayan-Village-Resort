@@ -1,0 +1,97 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+
+<!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:70px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Bookings</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">My Bookings</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+<!--================Breadcrumb Area =================-->
+    
+<!--================ Display Booking Area  =================-->
+<section>
+  <h2>My Booking</h2>
+  <div style="display: flex;align-items:center;justify-content:center;text-align:center;margin-top:20px">
+     <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+              
+            </div>
+            <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+              
+                
+            </div>
+            <div class="row" style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                {% if length > 0 %}
+                <table class="table table-hover table-responsive" >
+                    <thead>
+                      <tr>
+                        <th scope="col">Booking Id.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Check In Date</th>
+                        <th scope="col">Check Out Date</th>
+                        <th scope="col">No. Of Rooms</th>
+                        <th scope="col">No. Of Adults</th>
+                        <th scope="col">No. Of Children</th>
+                        <th scope="col">No. Of Days</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Payment Mode</th>
+                        <th scope="col">Payment Status</th>
+                        <th scope="col">Booking Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    
+                      
+                      {% for booking in bookings %}
+                      
+                      <tr>
+                        <th id="book_id" scope="row">{{booking.booking_id}}</th>
+                        <td>{{booking.first_name}} {{booking.last_name}}</td>
+                        <td>{{booking.mobile}}</td>
+                        <td>{{booking.email}}</td>
+                        <td>{{booking.city}}</td>
+                        <td>{{booking.state}}</td>
+                        <td>{{booking.check_in_date}}</td>
+                        <td>{{booking.check_out_date}}</td>
+                        <td>{{booking.no_of_rooms}}</td>
+                        <td>{{booking.no_of_adults}}</td>
+                        <td>{{booking.no_of_childen}}</td>
+                        <td>{{booking.no_of_days}}</td>
+                        <td>{{booking.amount}}</td>
+                        <td>{{booking.payment_mode}}</td>
+                        <td>{{booking.payment_status}}</td>
+                        <td>{{booking.booking_date}}</td>
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+                  {% else %}
+                    <div style="display:flex;align-items:center;justify-content:center;" ><h2 style="color:rgb(246, 27, 191)"> You don't have any Bookings! Contact us for Booking!!</h2>
+                    </div>
+                    <br><br>  
+                  {% endif %}
+                
+                <p style="font-weight:bold; font-size: large;margin-top:25px;text-align:center;">{{booking.check_in}}</p>
+                
+            </div>
+        </div>
+    </section>
+<!--================ Display Booking Area  =================-->
+    
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  ===============-->

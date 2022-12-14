@@ -1,0 +1,87 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+<!--================End Header Area =================-->
+
+<!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:70px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Gallery</h2>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Gallery</li>
+                </ol>
+            </div>
+        </div>
+    </section>    
+<!--================Breadcrumb Area =================-->
+        
+<!--================Gallery Area =================-->
+    <section class="gallery_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 class="title_color">Hotel Gallery</h2>
+                <p id="paragraphs_on_site">Who are in extremely love with eco friendly system.</p>
+            </div>
+            <div class="row imageGallery1" id="gallery">
+                <div class="col-md-4 gallery_item">
+                    <div class="gallery_img">
+                        <img src="{% static 'image/gallery/image1.jpeg' %}" alt="" style="height:300px">
+                        <div class="hover">
+                            <a class="light" href="{% static 'image/gallery/image1.jpeg' %}><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery_item">
+                    <div class="gallery_img">
+                        <img src="{% static 'image/gallery/image4.jpeg' %}" alt="" style="height:300px">
+                        <div class="hover">
+                            <a class="light" href="{% static 'image/gallery/image4.jpeg' %}"><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-4 gallery_item">
+                    <div class="gallery_img">
+                        <img src="{% static 'image/gallery/image5.jpeg' %}" alt="" style="height:300px">
+                        <div class="hover">
+                            <a class="light" href="{% static 'image/gallery/image5.jpeg' %}"><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery_item">
+                    <div class="gallery_img">
+                        <img src="{% static 'image/gallery/image2.jpeg' %}" alt="" style="height:300px" >
+                        <div class="hover">
+                            <a class="light" href="{% static 'image/gallery/image2.jpeg' %}"><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery_item">
+                    <div class="gallery_img">
+                        <img src="{% static 'image/gallery/image3.jpeg' %}" alt="" style="height:300px">
+                        <div class="hover">
+                            <a class="light" href="{% static 'image/gallery/image3.jpeg' %}"><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 gallery_item">
+                    <div class="gallery_img">
+                        <img src="{% static 'image/gallery/image6.jpeg' %}" alt="" style="height:300px">
+                        <div class="hover">
+                            <a class="light" href="{% static 'image/gallery/image6.jpeg' %}"><i class="fa fa-expand"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--================Gallery Area =================-->
+        
+        
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  =================-->

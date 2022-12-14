@@ -1,0 +1,106 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+
+<!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area">
+      <form method="POST">
+        {% csrf_token %} 
+       <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+              <div class="row" style="margin-top:0px;display:flex;align-items:center;justify-content:center;position:fixed;background-color:aqua;z-index:999999999999;width:103%;top:90;padding:8px">
+                <div class="col-md-5">
+                    <h4 style="margin-left:6px;color:black">Select the Booking and Choose Operation to perform:</h4>
+                </div>
+                <div class="col-md-2">
+                  <input type="submit" name="delete_booking" onclick="delete_clicked();" class=" btn theme_btn button_hover" value="Delete Booking" style="width:220px">              
+                </div>
+                <div class="col-md-2">
+                  <input type="submit" name="update_booking" onclick="update_clicked();" class=" btn theme_btn button_hover" value="Update Booking" style="width:220px">             
+                </div>
+                <div class="col-md-2">        
+                  <input type="number" name="search_booking_id" id="search_booking_id" placeholder="Enter Booking-Id(Number)" style="width:220px;height:44px" value="">                      
+                  <input type="submit" name="search_booking" onclick="search_clicked();" class=" btn theme_btn button_hover" value="Search Booking" style="width:220px">             
+                </div>  
+      </div>
+    </section>
+<!--================Breadcrumb Area =================-->
+    
+<!--================ Display Booking Area  =================-->
+    <section>
+      <div style="display: flex;align-items:center;justify-content:center;text-align:center;margin-top:20px">
+        {% for message in messages %}
+        <p id="message" style="background-color:grey;color:white;width:300px;text-align:center">{{message}}</p>
+       
+        {% endfor %}
+      </div>
+            {% if length > 0 %}
+                <table class="table table-hover table-responsive" style="margin-top: 50px"> 
+                    <thead>
+                      <tr>
+                        <th style="border:1px solid black">Select</th>
+                        <th scope="col" style="width:7%;border:1px solid black">Booking Id.</th>
+                        <th scope="col" style="width:7%;border:1px solid black">Name</th>
+                        <th scope="col" style="width:7%;border:1px solid black">Email</th>
+                        <th scope="col" style="width:5%;border:1px solid black">Mobile</th>
+                        <th scope="col" style="width:5%;border:1px solid black">City</th>
+                        <th scope="col" style="width:5%;border:1px solid black">State</th>
+                        <th scope="col" style="width:10%;border:1px solid black">Check_In_Date</th>
+                        <th scope="col" style="width:10%;border:1px solid black">Check_Out_Date</th>
+                        <th scope="col" style="width:5%;border:1px solid black">No. Of Rooms</th>
+                        <th scope="col" style="width:5%;border:1px solid black">No. Of Adults</th>
+                        <th scope="col" style="width:5%;border:1px solid black">No. Of Children</th>
+                        <th scope="col" style="width:5%;border:1px solid black">No. Of Days</th>
+                        <th scope="col" style="width:4%;border:1px solid black">Amount</th>
+                        <th scope="col" style="width:4%;border:1px solid black">Amount Paid</th>
+                        <th scope="col" style="width:4%;border:1px solid black">Amount Due</th>
+                        <th scope="col" style="width:5%;border:1px solid black">Payment Mode</th>
+                        <th scope="col" style="width:5%;border:1px solid black">Payment Status</th>
+                        <th scope="col" style="width:10%;border:1px solid black">Booking_Date</th>
+                    
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for booking in bookings %}
+                      <tr>
+                        <td><input id="select_record" type="radio" class="option-input radio" name="example" onclick="select_booking('{{booking.booking_id}}')" value={{booking.booking_id}}></td>
+                        <th style="border-left: 0.1px solid rgb(152, 127, 127);" id="book_id" scope="row">{{booking.booking_id}}</th>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.first_name}} {{booking.last_name}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.email}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.mobile}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.city}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.state}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.check_in_date}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.check_out_date}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.no_of_rooms}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.no_of_adults}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.no_of_childen}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.no_of_days}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.amount}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.amount_paid}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.amount_due}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.payment_mode}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.payment_status}}</td>
+                        <td style="border-left: 0.1px solid rgb(152, 127, 127);">{{booking.booking_date}}</td>
+                    
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+          <form>
+                  {% else %}
+                    <div style="display:flex;align-items:center;justify-content:center;margin-top:60px; " ><h2 style="color:rgb(246, 27, 191)"> No Bookings present in the Database!!</h2></div>
+                    <br><br>
+                  {% endif %}
+                
+                <p style="font-weight:bold; font-size: large;margin-top:25px;text-align:center;">{{booking.check_in}}</p>
+                
+            
+        </div>
+    </section>
+<!--================ Display Booking Area  =================-->
+    
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  ===============-->

@@ -1,0 +1,113 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+<!--================Header Area =================-->
+
+<!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:20px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Booking</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Booking</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+<!--================Breadcrumb Area =================-->
+    
+<!--================ Booking Area  =================-->
+    <section class="about_history_area section_gap" style="padding-top:40px;">
+
+        <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+            {% for message in messages %}
+            <p id="message" style="background-color:grey;color:white;width:500px;text-align:center">{{message}}</p>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                <h2>Step 1 - Check Room Availability</h2>
+            </div>
+            <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+              
+                
+            </div>
+            <div class="row" style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                <form class="needs-validation" method="post" validate>
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                        <label style="font-weight: bold;">Select Room:</label>
+                            <select class="wide" id="select_room" name="room_type" placeholder="Roomtype" required>
+                                <option value="Roomtype" required></option>
+                                <option value="DEL">Deluxe</option>
+                                <option value="KIN">King</option>
+                                <option value="QUE">Queen</option>
+                                <option value="YAC">AC</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputEmail4" style="font-weight: bold;">Check In Date</label>
+                            <input type="text" class="form-control in_date" name="check_in" data-provide="datepicker" placeholder="Arrival Date" id="example" style= "width:200px;">
+                            <label class="input-group-btn" for="txtDate">
+                                <span class="btn btn-default" style="width: 20px;">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <label for="inputEmail4" style="font-weight: bold;">Check Out Date</label>
+                            <input type= "text" class= "form-control in_date" name="check_out" data-provide= "datepicker" placeholder= "Departure Date" id="example" style= "width:200px;">
+                        </div>
+                    </div>
+                    
+                    <br>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-3">
+                            <label style="font-weight: bold;">No. of Adults</label>
+                            <input type="number" class="form-control" name="adults" id="adults" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label style="font-weight: bold;">No. of Children</label>
+                            <input type="number" class="form-control" value=0 name="children" id="children" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label style="font-weight: bold;">No. of Rooms</label>
+                            <input type="number" class="form-control" name="no_of_rooms" required>
+                        </div>
+                    </div>
+                    <br>
+                    <input type="submit" onclick="ddlValidate();" class="btn theme_btn button_hover" value="Check Availability">
+                   
+                </form>
+            </div>
+        </div>
+    </section>
+<!--================ Bookingt Area  =================-->
+
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  ===============-->
+
+<script type="text/javascript">
+    function ddlValidate() {
+        var e = document.getElementById("select_room");
+        var optionSelIndex = e.options[e.selectedIndex].value;
+        var optionSelectedText = e.options[e.selectedIndex].text;
+        if (optionSelIndex == 0) {
+            alert("Please select a Room");
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    $(function() {
+      $('#datetimepicker4').datetimepicker({
+        pickTime: false
+      });
+    });
+  </script>
+

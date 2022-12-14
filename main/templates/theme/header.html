@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hotels and Resorts in Kausani Uttarakhand - The Himalayan Village Resort</title>
+        <meta name="description" content="Are you looking for Hotels and Resort in Kausani Uttarakhand? Choose the Himalayan Village Resort that provides a range of facilities with comfortable rooms for guests." />
+        <meta name="keywords" content=" Resorts in Kausani, Agritourism in Kausani, Resorts in Kausani, Offbeat Resorts in Uttarakhand, Resort in himachal pradesh, luxury resorts in himachal,luxury resorts in Uttarakhand, Antique cottage resort,nature view resort, himalayas view,luxury resorts in uttarakhand "/>
+        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="NOODP">
+        <link rel="canonical" href="https://www.himalayanvillageresort.co.in/"/>
+ 
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Hotels and Resorts in Kausani Uttarakhand - The Himalayan Village Resort" />
+        <meta property="og:description" content="Are you looking for Hotels and Resort in Kausani Uttarakhand? Choose the Himalayan Village Resort that provides a range of facilities with comfortable rooms for guests.plus spledid view of himalayas" />
+        <meta property="og:image" content="https://www.himalayanvillageresort.co.in/gallery"/>
+        <meta property="og:url" content=" https://www.himalayanvillageresort.co.in/ " />
+        <meta property="og:site_name" content=" Hotels and Resorts in Kausani Uttarakhand - Himalayan Village resort" />
+      
+        <link rel="icon" href="{% static 'image/favicon.png' %}" type="image/png">
+        <title>Himalayan Village Resort</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+        
+        <!-- main css -->
+        <link rel= "stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'scss/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'css/radio.css' %}">
+        <script src="https://www.paypal.com/sdk/js?client-id=AVuWHDS-MJTL2HSq-PdvnOiiy-qxehzYl--hqEffY_-e1OIVpJmlxN-dIam3oxEljwzq0vxerwwwY3yz&currency=USD"></script>
+        
+    </head>
+    <body>
+        <!--================Header Area =================-->
+        <header class="header_area">
+            <div class="" >
+                <nav class="navbar navbar-expand-lg navbar-light" style="font-family:Comfortaa, Sans-Serif;background: linear-gradient(to top, #572507, #ffcf85);width:100%">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="{% url 'index' %}"><img src="{% static 'image/Logo3.png' %}" style="height:60px;width:200px;border-radius:5px;margin-top:5px"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto" style="font-family:Comfortaa, Sans-Serif">
+                            <li class="nav-item"><a class="nav-link" style="font-weight:400" href="{% url 'index' %}">Home</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'accomodation' %}">Rooms</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                            {% if user.is_authenticated %}
+                                {% if user.is_superuser %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'booking_by_admin' %}">Add Booking</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'admin_manage_booking' %}">Manage Booking</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><u class="nav-link" id="logout_u">Logout</u></a></li>
+                                <li class="nav-item"><a class="nav-link" style="color: rgb(181, 224, 232);font-size:medium;font-style:normal;font-weight:bold">Hello, Admin</a></li>
+                           
+                                {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><u id="logout_u">Logout</u></a></li>
+                                <li class="nav-item"><a class="nav-link" style="color: black;font-size:smaller;font-style:normal;font-weight:bold">Hello, {{user.username}}</a></li>
+                                {% endif %}
+
+                            {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'get_booking_ref' %}">Manage Booking</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'quick_pay' %}">Quick Pay</a></li>
+                                <li class="nav-item" style="background:linear-gradient(to top, #d75d11, #f1d4a9);width:120px;text-align:center"><a class="nav-link" href="{% url 'login' %}">Admin Login</a></li>   
+                            {% endif %}
+                        </ul>
+                    </div> 
+                </nav>
+                
+            </div>
+        </header>
+        <!--================Header Area =================-->
+

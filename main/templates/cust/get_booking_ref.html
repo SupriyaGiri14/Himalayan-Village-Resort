@@ -1,0 +1,56 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+<!--================Header Area =================-->
+
+<!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:20px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Display Booking</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Booking</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+<!--================Breadcrumb Area =================-->
+    
+<!--================ Booking Area  =================-->
+    <section class="about_history_area section_gap" style="padding-top:40px;">
+
+        <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+            {% for message in messages %}
+            <p id="message" style="background-color:grey;color:white;width:500px;text-align:center">{{message}}</p>
+            {% endfor %}
+        </div>
+        <div class="container">
+        
+            <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+              
+                
+            </div>
+            <div class="row" style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                <form class="needs-validation" method="post" validate>
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="booking_ref_no" style="font-weight: bold;width:175px">Enter Booking ref. No.
+                            <input type="text" class="form-control" name="ref_no" placeholder="" id="input_booking_id"></label>
+                        </div>
+                    </div>
+                    <input type="submit" onclick="searchbooking_clicked()" class="btn theme_btn button_hover" value="Check Booking">
+                </form>
+            </div>
+        </div>
+    </section>
+<!--================ Bookingt Area  =================-->
+
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  ===============-->
+
+

@@ -1,0 +1,102 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+
+    <!--================Breadcrumb Area =================-->
+<section class="breadcrumb_area" style="height:70px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Payment</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Quick Pay</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+<!--================Breadcrumb Area =================-->
+    
+<!--================ Quick Pay Area  =================-->
+    <section class="about_history_area section_gap" style="padding-top:40px;">
+        <div class="container">
+            <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                <h2>Quick Pay</h2><br><br>
+            </div>
+           
+            <form class="" method="post" validate>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="validationCustom01" style="padding-left:10px">Name:</label>
+                        <input placeholder="Name" class="form-control"  id="name" name="name" required  type="text">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="validationCustom01" style="padding-left:10px">Phone:</label>
+                        <input placeholder="Phone" id="phone" name="phone" class="form-control" required type="text"> 
+                    </div>
+                    <div class="col-md-4">        
+                        <label for="validationCustom01" style="padding-left:10px">E mail:</label>                   
+                         <input placeholder="E mail" id="email" name="email" class="form-control" required type="email">
+                    </div>
+                
+                    <div class="col-md-2">
+                     <label for="validationCustom01" style="padding-left:10px">Amount:</label>                   
+                         <input id="amount" min=0 name="amount" value="0" class="form-control" required type="number"> 
+        
+                        </div>
+
+                    <div class="col-md-2">
+                        <div id="paypal-button-container"></div>
+                    </div>
+                  
+                </div>
+            </form>  
+            <br> 
+            
+                     
+            
+            <br>
+           
+            <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+                {% for message in messages %}
+                <p id="message" style="background-color:grey;color:white;width:500px;text-align:center">{{message}}</p>
+                {% endfor %}
+            </div>
+                
+        </div>
+    </section>
+
+    <script>
+        let amount = 'document.getElementById("myText").value'
+        paypal.Buttons({
+          // Sets up the transaction when a payment button is clicked
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: 2 // Can also reference a variable or function
+                }
+              }]
+            });
+          },
+          // Finalize the transaction after payer approval
+          onApprove: (data, actions) => {
+            return actions.order.capture().then(function(orderData) {
+              // Successful capture! For dev/demo purposes:
+              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+              const transaction = orderData.purchase_units[0].payments.captures[0];
+              alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+              // When ready to go live, remove the alert and show a success message within this page. For example:
+              // const element = document.getElementById('paypal-button-container');
+              // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+              // Or go to another URL:  actions.redirect('thank_you.html');
+            });
+          }
+        }).render('#paypal-button-container');
+      </script>
+<!--================ Quick Pay Area  =================-->
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  =================-->

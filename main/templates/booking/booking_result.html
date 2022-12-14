@@ -1,0 +1,48 @@
+{% load static %}
+
+<!--================Header Area =================-->
+{% include 'theme/header.html' %}
+
+<!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area" style="height:70px;">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Booking</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Booking</li>
+                </ol>
+            </div>
+           
+        </div>
+        
+    </section>
+<!--================Breadcrumb Area =================-->
+    
+<!--================ Booking-Result Area  =================-->
+    <section class="about_history_area section_gap" style="padding-top:40px;">
+        <div class="container">
+            <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                <h2>User Room Booking</h2><br><br>
+                
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;">
+                <a href="{% url 'booking' %}">Go for another Booking</a>
+            </div>
+            <br>
+             
+            
+            <div style="display: flex;align-items:center;justify-content:center;text-align:center">
+                {% for message in messages %}
+                <p id="message" style="background-color:grey;color:white;width:500px;text-align:center">{{message}}</p>
+                {% endfor %}
+            </div>
+                
+        </div>
+    </section>
+<!--================ Booking-result Area  =================-->
+
+<!--================ start footer Area  ===============-->
+{% include 'theme/footer.html' %}  
+<!--================ end footer Area  =================-->
